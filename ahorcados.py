@@ -107,12 +107,13 @@ def display_board(hidden_word, tries):
 
 
 def display_banner():
-    banner = "\n╔═══╗╔╗                    ╔╗    \n"
-    banner += "║╔═╗║║║                    ║║    \n"
-    banner += "║║ ║║║╚═╗╔══╗╔═╗╔══╗╔══╗ ╔═╝║╔══╗\n"
-    banner += "║╚═╝║║╔╗║║╔╗║║╔╝║╔═╝╚ ╗║ ║╔╗║║╔╗║\n"
-    banner += "║╔═╗║║║║║║╚╝║║║ ║╚═╗║╚╝╚╗║╚╝║║╚╝║\n"
-    banner += "╚╝ ╚╝╚╝╚╝╚══╝╚╝ ╚══╝╚═══╝╚══╝╚══╝\n"
+    banner = "\n ╔═══╗╔╗                    ╔╗    \n"
+    banner += " ║╔═╗║║║                    ║║    \n"
+    banner += " ║║ ║║║╚═╗╔══╗╔═╗╔══╗╔══╗ ╔═╝║╔══╗\n"
+    banner += " ║╚═╝║║╔╗║║╔╗║║╔╝║╔═╝╚ ╗║ ║╔╗║║╔╗║\n"
+    banner += " ║╔═╗║║║║║║╚╝║║║ ║╚═╗║╚╝╚╗║╚╝║║╚╝║\n"
+    banner += " ╚╝ ╚╝╚╝╚╝╚══╝╚╝ ╚══╝╚═══╝╚══╝╚══╝\n"
+    banner += "--[ Juego del ahorcado | @M4lal0 ]--"
     return print(bcolors.OKBLUE + banner + bcolors.ENDC)
 
 

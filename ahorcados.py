@@ -1,6 +1,18 @@
+# coding: utf-8
+# @M4lal0
+
 import random
 import os
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 IMAGES = ['''
 
@@ -113,8 +125,7 @@ def run():
 
             if tries == 7:
                 display_board(hidden_word, tries)
-                print('')
-                print('¡Perdiste! La palabra correcta era: {0}'.format(word))
+                print(bcolors.FAIL + "\n¡Perdiste! La palabra correcta era: {0}".format(word) + bcolors.ENDC)
                 break
         else:
             for idx in letter_indexes:
@@ -125,11 +136,14 @@ def run():
         try:
             hidden_word.index('-')
         except ValueError:
-            print('')
-            print('¡Felicidades! Ganaste. La palabra es: {0}'.format(word))
+            print(bcolors.OKGREEN + "\n¡Felicidades! Ganaste. La palabra es: {0}".format(word) + bcolors.ENDC)
             break
 
 
 if __name__ == '__main__':
-    print('B I E N V E N I D O S  A  A H O R C A D O S')
+    banner = "\n ___\n"
+    banner += "|[_]|\n"
+    banner += "|+ ;| " + bcolors.WARNING + " - Juego del ahorcado\n" + bcolors.ENDC
+    banner += "`---'\n"
+    print(banner)
     run()

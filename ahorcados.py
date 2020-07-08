@@ -3,6 +3,7 @@
 
 import random
 import os
+import time
 
 
 class bcolors:
@@ -98,7 +99,7 @@ def random_word(option):
         idx = random.randint(0, len(WORDS_HARD) - 1)
         return WORDS_HARD[idx]
     else:
-        print("Option invalid!")
+        return None
 
 
 def display_board(hidden_word, tries):
@@ -126,40 +127,48 @@ def run():
     print("[2] - Medium")
     print("[3] - Hard")
     option = input("Select an option [1-3]: ")
-    os.system('cls')
-    word = random_word(option)
-    hidden_word = ['-'] * len(word)
-    tries = 0
-
-    while True:
+    if option == "1" or option == "2" or option == "3":
         os.system('cls')
-        display_banner()
-        display_board(hidden_word, tries)
-        current_letter = str(input('Type a letter: '))
+        word = random_word(option)
+        hidden_word = ['-'] * len(word)
+        tries = 0
 
-        letter_indexes = []
-        for idx in range(len(word)):
-            if word[idx] == current_letter:
-                letter_indexes.append(idx)
-
-        if len(letter_indexes) == 0:
-            tries += 1
-
-            if tries == 7:
-                display_board(hidden_word, tries)
-                print(bcolors.FAIL + "\n¡Game over! You lost. The correct word was: {0}".format(word) + bcolors.ENDC)
-                break
-        else:
-            for idx in letter_indexes:
-                hidden_word[idx] = current_letter
+        while True:
+            os.system('cls')
+            display_banner()
+            display_board(hidden_word, tries)
+            current_letter = str(input('Type a letter: '))
 
             letter_indexes = []
+            for idx in range(len(word)):
+                if word[idx] == current_letter:
+                    letter_indexes.append(idx)
 
-        try:
-            hidden_word.index('-')
-        except ValueError:
-            print(bcolors.OKGREEN + "\n¡Congratulation! You win. The word is: {0}".format(word) + bcolors.ENDC)
-            break
+            if len(letter_indexes) == 0:
+                tries += 1
+
+                if tries == 7:
+                    os.system('cls')
+                    display_banner()
+                    display_board(hidden_word, tries)
+                    print(bcolors.FAIL + "\n¡Game over! You lost. The correct word was: {0}".format(word) + bcolors.ENDC)
+                    break
+            else:
+                for idx in letter_indexes:
+                    hidden_word[idx] = current_letter
+
+                letter_indexes = []
+
+            try:
+                hidden_word.index('-')
+            except ValueError:
+                print(bcolors.OKGREEN + "\n¡Congratulation! You win. The word is: {0}".format(word) + bcolors.ENDC)
+                break
+    else:
+        print("Option invalid!")
+        time.sleep(1)
+        os.system('ctrl + c')
+        os.system('cls')
 
 
 if __name__ == '__main__':

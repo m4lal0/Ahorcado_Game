@@ -4,6 +4,7 @@
 import random
 import os
 
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -105,6 +106,14 @@ def display_board(hidden_word, tries):
     print('--- * --- * --- * --- * --- * --- ')
 
 
+def display_banner():
+    banner = "\n.___.\n"
+    banner += "|[_]|\n"
+    banner += "|+ ;| " + bcolors.WARNING + " - Juego del ahorcado\n" + bcolors.ENDC
+    banner += "`---'\n"
+    return print(banner)
+
+
 def run():
     word = random_word()
     hidden_word = ['-'] * len(word)
@@ -141,9 +150,5 @@ def run():
 
 
 if __name__ == '__main__':
-    banner = "\n ___\n"
-    banner += "|[_]|\n"
-    banner += "|+ ;| " + bcolors.WARNING + " - Juego del ahorcado\n" + bcolors.ENDC
-    banner += "`---'\n"
-    print(banner)
+    display_banner()
     run()

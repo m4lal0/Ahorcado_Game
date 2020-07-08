@@ -82,21 +82,23 @@ IMAGES = ['''
         =========''', '''
 ''']
 
-WORDS = [
-    'lavadora',
-    'secadora',
-    'sofa',
-    'gobierno',
-    'diputado',
-    'democracia',
-    'computadora',
-    'teclado'
-]
+WORDS_EASY = ['fuego','cara','sofa','gobierno','tesla','camisa','adulto','aire','mesa','pan']
+WORDS_MEDIUM= ['pelicula','obligacion','estados','amazonas','peligroso','avioneta','democracia','volcan','computadora']
+WORDS_HARD = ['anticonstitucionalmente','parangaricutirimicuaro','otorrinolaringologia','institucionalizacion','esternocleidomastoideo','electroencefalograma']
 
 
-def random_word():
-    idx = random.randint(0, len(WORDS) - 1)
-    return WORDS[idx]
+def random_word(option):
+    if option == "1":
+        idx = random.randint(0, len(WORDS_EASY) - 1)
+        return WORDS_EASY[idx]
+    elif option == "2":
+        idx = random.randint(0, len(WORDS_MEDIUM) - 1)
+        return WORDS_MEDIUM[idx]
+    elif option == "3":
+        idx = random.randint(0, len(WORDS_HARD) - 1)
+        return WORDS_HARD[idx]
+    else:
+        print("Option invalid!")
 
 
 def display_board(hidden_word, tries):
@@ -118,14 +120,22 @@ def display_banner():
 
 
 def run():
-    word = random_word()
+    display_banner()
+    print("\nOptions:")
+    print("[1] - Easy")
+    print("[2] - Medium")
+    print("[3] - Hard")
+    option = input("Select an option [1-3]: ")
+    os.system('cls')
+    word = random_word(option)
     hidden_word = ['-'] * len(word)
     tries = 0
 
     while True:
-        display_board(hidden_word, tries)
-        current_letter = str(input('Escoge una letra: '))
         os.system('cls')
+        display_banner()
+        display_board(hidden_word, tries)
+        current_letter = str(input('Type a letter: '))
 
         letter_indexes = []
         for idx in range(len(word)):
@@ -137,7 +147,7 @@ def run():
 
             if tries == 7:
                 display_board(hidden_word, tries)
-                print(bcolors.FAIL + "\n¡Perdiste! La palabra correcta era: {0}".format(word) + bcolors.ENDC)
+                print(bcolors.FAIL + "\n¡Game over! You lost. The correct word was: {0}".format(word) + bcolors.ENDC)
                 break
         else:
             for idx in letter_indexes:
@@ -148,10 +158,9 @@ def run():
         try:
             hidden_word.index('-')
         except ValueError:
-            print(bcolors.OKGREEN + "\n¡Felicidades! Ganaste. La palabra es: {0}".format(word) + bcolors.ENDC)
+            print(bcolors.OKGREEN + "\n¡Congratulation! You win. The word is: {0}".format(word) + bcolors.ENDC)
             break
 
 
 if __name__ == '__main__':
-    display_banner()
     run()

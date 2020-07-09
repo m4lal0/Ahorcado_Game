@@ -1,4 +1,5 @@
-# @M4lal0
+# Juego del ahorcado
+# by @M4lal0
 # -*- coding: utf-8 -*-
 
 import random,os,time
@@ -80,8 +81,8 @@ IMAGES = ['''
         =========''', '''
 ''']
 
-WORDS_EASY = ['fuego','cara','sofa','gobierno','tesla','camisa','adulto','aire','mesa','pan']
-WORDS_MEDIUM= ['pelicula','obligacion','estados','amazonas','peligroso','avioneta','democracia','volcan','computadora']
+WORDS_EASY = ['pelicula','obligacion','estados','fuego','cara','sofa','gobierno','camisa','adulto','aire','mesa','pan','volcan']
+WORDS_MEDIUM= ['microsoft','facebook','tesla','twitter','amazon','telefonica','avioneta','democracia','computadora','gobierno']
 WORDS_HARD = ['anticonstitucionalmente','parangaricutirimicuaro','otorrinolaringologia','institucionalizacion','esternocleidomastoideo','electroencefalograma']
 
 

@@ -1,9 +1,7 @@
-# coding: utf-8
 # @M4lal0
+# -*- coding: utf-8 -*-
 
-import random
-import os
-import time
+import random,os,time
 
 
 class bcolors:
@@ -116,7 +114,7 @@ def display_banner():
     banner += " ║╚═╝║║╔╗║║╔╗║║╔╝║╔═╝╚ ╗║ ║╔╗║║╔╗║\n"
     banner += " ║╔═╗║║║║║║╚╝║║║ ║╚═╗║╚╝╚╗║╚╝║║╚╝║\n"
     banner += " ╚╝ ╚╝╚╝╚╝╚══╝╚╝ ╚══╝╚═══╝╚══╝╚══╝\n"
-    banner += "--[ Juego del ahorcado | @M4lal0 ]--"
+    banner += "--[ Juego del ahorcado | v20.02 ]--"
     return print(bcolors.OKBLUE + banner + bcolors.ENDC)
 
 

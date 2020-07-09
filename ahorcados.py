@@ -81,9 +81,9 @@ IMAGES = ['''
         =========''', '''
 ''']
 
-WORDS_EASY = ['pelicula','obligacion','estados','fuego','cara','sofa','gobierno','camisa','adulto','aire','mesa','pan','volcan']
-WORDS_MEDIUM= ['microsoft','facebook','tesla','twitter','amazon','telefonica','avioneta','democracia','computadora','gobierno']
-WORDS_HARD = ['anticonstitucionalmente','parangaricutirimicuaro','otorrinolaringologia','institucionalizacion','esternocleidomastoideo','electroencefalograma']
+WORDS_EASY = ('pelicula','obligacion','estados','fuego','cara','sofa','gobierno','camisa','adulto','aire','mesa','pan','volcan')
+WORDS_MEDIUM= ('microsoft','facebook','tesla','twitter','amazon','telefonica','avioneta','democracia','computadora','gobierno')
+WORDS_HARD = ('anticonstitucionalmente','parangaricutirimicuaro','otorrinolaringologia','institucionalizacion','esternocleidomastoideo','electroencefalograma')
 
 
 def random_word(option):
@@ -160,6 +160,9 @@ def main():
             try:
                 hidden_word.index('-')
             except ValueError:
+                os.system('cls')
+                display_banner()
+                display_board(hidden_word, tries)
                 print(bcolors.OKGREEN + "\n¡Congratulation! You win. The word is: {0}".format(word) + bcolors.ENDC)
                 break
     else:

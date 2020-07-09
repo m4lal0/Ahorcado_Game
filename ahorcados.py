@@ -3,7 +3,6 @@
 
 import random,os,time
 
-
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -118,7 +117,7 @@ def display_banner():
     return print(bcolors.OKBLUE + banner + bcolors.ENDC)
 
 
-def run():
+def main():
     display_banner()
     print("\nOptions:")
     print("[1] - Easy")
@@ -170,4 +169,4 @@ def run():
 
 
 if __name__ == '__main__':
-    run()
+    main()

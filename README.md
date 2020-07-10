@@ -9,5 +9,13 @@
 
 Pequeño programa realizado con Python para prácticar un poco lo aprendido sobre este lenguaje.
 
+El juego cuenta con tres dificultades de palabras:
+
+* Fácil
+* Medio
+* Difícil
+
+_Más adelante modificaré el código para mejorarlo._
+
 ---
 ⌨️ con ❤️ por [Malalo](https://github.com/m4lal0)

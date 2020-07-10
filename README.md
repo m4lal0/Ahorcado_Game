@@ -15,7 +15,7 @@ El juego cuenta con tres dificultades de palabras:
 * Medio
 * Difícil
 
-_Más adelante modificaré el código para mejorarlo._
+> Más adelante modificaré el código para mejorarlo.
 
 ---
 ⌨️ con ❤️ por [Malalo](https://github.com/m4lal0)

@@ -1,8 +1,9 @@
+#!/usr/bin/python3
 # Juego del ahorcado
 # by @M4lal0
 # -*- coding: utf-8 -*-
 
-import random,os,time
+import random, os, sys, time
 
 class bcolors:
     HEADER = '\033[95m'
@@ -10,9 +11,9 @@ class bcolors:
     OKGREEN = '\033[92m'
     WARNING = '\033[93m'
     FAIL = '\033[91m'
-    ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+    ENDC = '\033[0m'
 
 IMAGES = ['''
 
@@ -168,8 +169,9 @@ def main():
     else:
         print("Option invalid!")
         time.sleep(1)
-        os.system('ctrl + c')
-        os.system('cls')
+        sys.exit(1)
+        #os.system('ctrl + c')
+        #os.system('cls')
 
 
 if __name__ == '__main__':

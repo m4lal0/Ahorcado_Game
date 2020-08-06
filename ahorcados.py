@@ -3,20 +3,24 @@
 # by @M4lal0
 # -*- coding: utf-8 -*-
 
-import random, os, sys, time
+import random
+import subprocess,sys
+import os,platform
+from time import sleep 
 
 class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    BOLD = '\033[1m'
+    PURPLE = '\033[95m'
+    BLUE = '\033[94m'
+    YELLOW = '\033[93m'
+    GREEN = '\033[92m'
+    RED = '\033[91m'
+    DARKCYAN = '\033[36m'
     UNDERLINE = '\033[4m'
+    BOLD = '\033[1m'
     ENDC = '\033[0m'
 
+
 IMAGES = ['''
-
     +---+
     |   |
         |
@@ -24,7 +28,6 @@ IMAGES = ['''
         |
         |
         =========''', '''
-
     +---+
     |   |
     O   |
@@ -32,7 +35,6 @@ IMAGES = ['''
         |
         |
         =========''', '''
-
     +---+
     |   |
     O   |
@@ -40,7 +42,6 @@ IMAGES = ['''
         |
         |
         =========''', '''
-
     +---+
     |   |
     O   |
@@ -48,7 +49,6 @@ IMAGES = ['''
         |
         |
         =========''', '''
-
     +---+
     |   |
     O   |
@@ -56,7 +56,6 @@ IMAGES = ['''
         |
         |
         =========''', '''
-
     +---+
     |   |
     O   |
@@ -64,7 +63,6 @@ IMAGES = ['''
     |   |
         |
         =========''', '''
-
     +---+
     |   |
     O   |
@@ -72,7 +70,6 @@ IMAGES = ['''
     |   |
    /    |
         =========''', '''
-
     +---+
     |   |
     O   |
@@ -108,6 +105,11 @@ def display_board(hidden_word, tries):
     print('--- * --- * --- * --- * --- * --- ')
 
 
+def Clear():
+    subprocess.Popen( "cls" if platform.system() == "Windows" else "clear", shell=True)
+    sleep(0.1)
+
+
 def display_banner():
     banner = "\n ╔═══╗╔╗                    ╔╗    \n"
     banner += " ║╔═╗║║║                    ║║    \n"
@@ -116,7 +118,7 @@ def display_banner():
     banner += " ║╔═╗║║║║║║╚╝║║║ ║╚═╗║╚╝╚╗║╚╝║║╚╝║\n"
     banner += " ╚╝ ╚╝╚╝╚╝╚══╝╚╝ ╚══╝╚═══╝╚══╝╚══╝\n"
     banner += "--[ Juego del ahorcado | v20.02 ]--"
-    return print(bcolors.OKBLUE + banner + bcolors.ENDC)
+    return print(bcolors.BLUE + banner + bcolors.ENDC)
 
 
 def main():
@@ -127,13 +129,13 @@ def main():
     print("[3] - Hard")
     option = input("Select an option [1-3]: ")
     if option == "1" or option == "2" or option == "3":
-        os.system('cls')
+        Clear()
         word = random_word(option)
         hidden_word = ['-'] * len(word)
         tries = 0
 
         while True:
-            os.system('cls')
+            Clear()
             display_banner()
             display_board(hidden_word, tries)
             current_letter = str(input('Type a letter: '))
@@ -147,10 +149,10 @@ def main():
                 tries += 1
 
                 if tries == 7:
-                    os.system('cls')
+                    Clear()
                     display_banner()
                     display_board(hidden_word, tries)
-                    print(bcolors.FAIL + "\n¡Game over! You lost. The correct word was: {0}".format(word) + bcolors.ENDC)
+                    print(bcolors.RED + "\n¡Game over! You lost. The correct word was: {0}".format(word) + bcolors.ENDC)
                     break
             else:
                 for idx in letter_indexes:
@@ -161,17 +163,15 @@ def main():
             try:
                 hidden_word.index('-')
             except ValueError:
-                os.system('cls')
+                Clear()
                 display_banner()
                 display_board(hidden_word, tries)
-                print(bcolors.OKGREEN + "\n¡Congratulation! You win. The word is: {0}".format(word) + bcolors.ENDC)
+                print(bcolors.GREEN + "\n¡Congratulation! You win. The word is: {0}".format(word) + bcolors.ENDC)
                 break
     else:
         print("Option invalid!")
-        time.sleep(1)
+        sleep(0.1)
         sys.exit(1)
-        #os.system('ctrl + c')
-        #os.system('cls')
 
 
 if __name__ == '__main__':

@@ -5,8 +5,8 @@
 
 import random
 import subprocess,sys
-import os,platform
-from time import sleep 
+import platform
+import time
 
 class bcolors:
     PURPLE = '\033[95m'
@@ -107,7 +107,7 @@ def display_board(hidden_word, tries):
 
 def Clear():
     subprocess.Popen( "cls" if platform.system() == "Windows" else "clear", shell=True)
-    sleep(0.1)
+    time.sleep(0.1)
 
 
 def display_banner():
@@ -118,15 +118,15 @@ def display_banner():
     banner += " ║╔═╗║║║║║║╚╝║║║ ║╚═╗║╚╝╚╗║╚╝║║╚╝║\n"
     banner += " ╚╝ ╚╝╚╝╚╝╚══╝╚╝ ╚══╝╚═══╝╚══╝╚══╝\n"
     banner += "--[ Juego del ahorcado | v20.02 ]--"
-    return print(bcolors.BLUE + banner + bcolors.ENDC)
+    return print(bcolors.DARKCYAN + banner + bcolors.ENDC)
 
 
 def main():
     display_banner()
-    print("\nOptions:")
-    print("[1] - Easy")
-    print("[2] - Medium")
-    print("[3] - Hard")
+    print("""\nDifficulty:
+    [1] - Easy
+    [2] - Medium
+    [3] - Hard""")
     option = input("Select an option [1-3]: ")
     if option == "1" or option == "2" or option == "3":
         Clear()
@@ -170,7 +170,7 @@ def main():
                 break
     else:
         print("Option invalid!")
-        sleep(0.1)
+        time.sleep(1)
         sys.exit(1)
 
 

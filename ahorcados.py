@@ -7,6 +7,7 @@ import random
 import subprocess,sys
 import platform
 import time
+import base64
 
 class bcolors:
     PURPLE = '\033[95m'
@@ -79,23 +80,31 @@ IMAGES = ['''
         =========''', '''
 ''']
 
-WORDS_EASY = ('pelicula','obligacion','estados','fuego','cara','sofa','gobierno','camisa','adulto','aire','mesa','pan','volcan')
-WORDS_MEDIUM= ('microsoft','facebook','tesla','twitter','amazon','telefonica','avioneta','democracia','computadora','gobierno')
-WORDS_HARD = ('anticonstitucionalmente','parangaricutirimicuaro','otorrinolaringologia','institucionalizacion','esternocleidomastoideo','electroencefalograma')
+WORDS_EASY = ('cGVsaWN1bGE=','b2JsaWdhY2lvbg==','ZXN0YWRvcw==','ZnVlZ28=','Y2FyYQ==','c29mYQ==','Y2FtaXNh','YWR1bHRv','YWlyZQ==','bWVzYQ==','cGFu','dm9sY2Fu')
+WORDS_MEDIUM = ('bWljcm9zb2Z0','ZmFjZWJvb2s=','dGVzbGE=','dHdpdHRlcg==','YW1hem9u','dGVsZWZvbmljYQ==','YXZpb25ldGE=','ZGVtb2NyYWNpYQ==','Y29tcHV0YWRvcmE=','Z29iaWVybm8=')
+WORDS_HARD = ('YW50aWNvbnN0aXR1Y2lvbmFsbWVudGU=','cGFyYW5nYXJpY3V0aXJpbWljdWFybw==','b3RvcnJpbm9sYXJpbmdvbG9naWE=','aW5zdGl0dWNpb25hbGl6YWNpb24=','ZXN0ZXJub2NsZWlkb21hc3RvaWRlbw==','ZWxlY3Ryb2VuY2VmYWxvZ3JhbWE=')
 
 
 def random_word(option):
     if option == "1":
         idx = random.randint(0, len(WORDS_EASY) - 1)
-        return WORDS_EASY[idx]
+        return decodeBase64(WORDS_EASY[idx])
     elif option == "2":
         idx = random.randint(0, len(WORDS_MEDIUM) - 1)
-        return WORDS_MEDIUM[idx]
+        return decodeBase64(WORDS_MEDIUM[idx])
     elif option == "3":
         idx = random.randint(0, len(WORDS_HARD) - 1)
-        return WORDS_HARD[idx]
+        return decodeBase64(WORDS_HARD[idx])
     else:
         return None
+
+
+def decodeBase64(theword):
+    base64_message = theword
+    base64_bytes = base64_message.encode('ascii')
+    message_bytes = base64.b64decode(base64_bytes)
+    message = message_bytes.decode('ascii')
+    return message
 
 
 def display_board(hidden_word, tries):
